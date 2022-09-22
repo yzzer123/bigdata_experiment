@@ -181,7 +181,7 @@ rpm -qa | grep -i java | xargs -n1 sudo rpm -e --nodeps
    java -version
    ```
 
-   ![image-20220921163048958](/Users/yzzer/Desktop/助教/imgs/image-20220921163048958.png)
+   ![image-20220921163048958](./imgs/image-20220921163048958.png)
 
 ## 6. Linux用户配置(可选)
 
