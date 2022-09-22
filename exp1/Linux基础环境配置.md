@@ -23,11 +23,11 @@
 
    
 
-   ![image-20220921140042923](/Users/yzzer/Desktop/助教/imgs/image-20220921140042923.png)
+   ![image-20220921140042923](./imgs/image-20220921140042923.png)
 
 2. 在连接完服务器后，就可以在终端内执行命令
 
-   <img src="/Users/yzzer/Desktop/助教/imgs/image-20220921141050486.png" alt="image-20220921141050486" style="zoom:50%;" />
+   <img src="./imgs/image-20220921141050486.png" alt="image-20220921141050486" style="zoom:50%;" />
 
 ## 1. 
 
@@ -44,7 +44,7 @@ sudo yum install -y psmisc nc net-tools rsync vim lrzsz ntp libzstd openssl-stat
 
 其中，`htop`工具可以很方便地查看服务器的资源使用情况，在之后的综合实验中，我们需要观察服务器的负载情况，如果内存不足，我们可以选择对服务器进行扩容
 
-![image-20220921143614869](/Users/yzzer/Desktop/助教/imgs/image-20220921143614869.png)
+![image-20220921143614869](./imgs/image-20220921143614869.png)
 
 之后为了防止JDK环境冲突，我们尝试卸载掉系统自带的OpenJDK，方便我们后续安装Oracle的JDK1.8。也有可能系统并没有自带OpenJDK
 
@@ -224,7 +224,7 @@ rpm -qa | grep -i java | xargs -n1 sudo rpm -e --nodeps
 
    编辑效果：
 
-   ![image-20220921142908980](/Users/yzzer/Desktop/助教/imgs/image-20220921142908980.png)
+   ![image-20220921142908980](./imgs/image-20220921142908980.png)
 
    **保存退出后，可以再次进入vim，查看文件是否成功修改！**
 
