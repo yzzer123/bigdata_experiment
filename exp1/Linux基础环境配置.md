@@ -149,7 +149,7 @@ rpm -qa | grep -i java | xargs -n1 sudo rpm -e --nodeps
 >
 > 软件包 [jdk-8u341-linux-x64.tar.gz](https://www.oracle.com/java/technologies/downloads/#java8) 需要登录Oracle账号下载，下载后通过`sftp`或`ftp`或`scp`上传文件到服务器
 
-1. 下载jdk软件包。参考上述方法自行下载上到`/opt/software`目录下。
+1. 下载jdk软件包。参考上述方法自行下载上传到`/opt/software`目录下。
 
 2. 解压软件包到指定文件夹
 
