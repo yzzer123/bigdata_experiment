@@ -5,14 +5,11 @@
 > 本教程包括：
 >
 > - 连接服务器
->- yum基础软件包安装
+> - yum基础软件包安装
 > - 目录创建
 > - 主机名称修改
 > - ssh免密配置
 > - JDK环境配置
-> - Linux用户配置（可选）
-
-
 
 ## 0. 连接服务器
 
@@ -29,9 +26,7 @@
 
    <img src="./imgs/image-20220921141050486.png" alt="image-20220921141050486" style="zoom:50%;" />
 
-## 1. 
-
-## yum基础软件包安装
+## 1. yum基础软件包安装
 
 > 下列命令需要在各个节点上分别执行
 
@@ -80,32 +75,32 @@ rpm -qa | grep -i java | xargs -n1 sudo rpm -e --nodeps
 
 > 下列命令需要在各个节点上分别执行
 
-1. 在三台节点上分别修改主机名称，格式为 `[姓名缩写]-1-[学号] `\\`[姓名缩写]-2-[学号]`\\`[姓名缩写]-3-[学号]` 如`zs-1-2022111xxx`
+1. 在三台节点上分别修改主机名称，格式为 `[姓名缩写]-0-[学号] `\\`[姓名缩写]-1-[学号]`\\`[姓名缩写]-2-[学号]` 如`zs-1-2022111xxx`
 
    ```shell
-   [root@server-0001 ~] sudo hostnamectl --static set-hostname zs-1-2022111xxx
-   [root@server-0002 ~] sudo hostnamectl --static set-hostname zs-2-2022111xxx
-   [root@server-0003 ~] sudo hostnamectl --static set-hostname zs-3-2022111xxx
+   [root@server-0001 ~] sudo hostnamectl --static set-hostname zs-0-2022111xxx
+   [root@server-0002 ~] sudo hostnamectl --static set-hostname zs-1-2022111xxx
+   [root@server-0003 ~] sudo hostnamectl --static set-hostname zs-2-2022111xxx
    ```
 
    可以通过`hostname`命令查看是否修改成功
 
    ```shell
-   [root@zs-1-2022111xxx ~] hostname
+   [root@zs-0-2022111xxx ~] hostname
+   zs-0-2022111xxx
+   [root@zs-1-2022111xxx ~] hostname 
    zs-1-2022111xxx
    [root@zs-2-2022111xxx ~] hostname 
    zs-2-2022111xxx
-   [root@zs-3-2022111xxx ~] hostname 
-   zs-3-2022111xxx
    ```
 
 2. 使用sudo权限修改`/etc/hosts`文件，添加配置好的`主机名称`和`私有ip`，**主机名称和上面配置的名称格式要一致！！**
 
    ```shell
    # 内容供参考，需要根据配置的局域网静态ip修改 
-   192.168.0.80	zs-1-2022111xxx
-   192.168.0.81	zs-2-2022111xxx
-   192.168.0.82	zs-3-2022111xxx
+   192.168.0.80	zs-0-2022111xxx
+   192.168.0.81	zs-1-2022111xxx
+   192.168.0.82	zs-2-2022111xxx
    ```
 
    
@@ -135,9 +130,9 @@ rpm -qa | grep -i java | xargs -n1 sudo rpm -e --nodeps
 
 
    ```shell
+   ssh-copy-id zs-0-2022111xxx
    ssh-copy-id zs-1-2022111xxx
    ssh-copy-id zs-2-2022111xxx
-   ssh-copy-id zs-3-2022111xxx
    ```
 
    
