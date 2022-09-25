@@ -65,17 +65,8 @@ rpm -qa | grep -i java | xargs -n1 sudo rpm -e --nodeps
 
    注:`mkdir`命令用于新建文件夹
 
-2. 如果后续不是使用`root`用户，还需要修改用户权限
 
-   ```shell
-   sudo chown hadoop:hadoop /opt/module
-   sudo chown hadoop:hadoop /opt/software
-   ```
-
-   注：`chown`命令用于修改目录或文件权限
-
-
-3. 创建环境变量文件
+2. 创建环境变量文件
 
    > 环境变量文件可以配置终端命令的扫描路径(PATH)，以及全局的环境变量，这些环境变量可以被命令或者程序调用
 
