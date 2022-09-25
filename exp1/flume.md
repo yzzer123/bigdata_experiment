@@ -28,7 +28,7 @@ output:
 
 2. 添加环境变量
 
-   修改`~/.bashrc`文件，在末尾添加变量
+   修改`/etc/profile.d/flume.sh`文件，在末尾添加变量
 
    ```bash
    # flume ENV
@@ -39,8 +39,10 @@ output:
    然后激活配置
 
    ```bash
-   source ~/.bashrc
+   source /etc/profile
    ```
+   
+   > 这里为了和之后的一些环境变量设置相统一，将环境变量放在全局的配置文件中，事实上这里放在 `~/.bashrc` 中也是可以的
 
 3. 配置 `source type` 为 `avor`，`sink type` 为 `logger`
 
@@ -82,21 +84,28 @@ output:
    ```txt
    Hello
    Flume
-   〖学号〗
+   [学号]
    ```
 
 6. 在第 4 步中的输出中检查接收到的信息，截图并完成实验报告
 
 
 
-## 思考题
+## 思考题(额外加分项)
 
-**背景介绍**：在生产环境中，日常 web 应用通常分布在上百个服务器，甚至上千个、上万个服务器。产生的日志，处理起来也非常麻烦。用 flume 的这种组合方式能很好的解决这一问题，每台服务器部署一个 flume 采集日志，传送到一个集中收集日志的flume，再由此 flume 上传到 hdfs、hive、hbase 等进行日志分析。
+**背景介绍**：现在有如下脚本正在运行，该脚本的作用是每秒生成一个时间戳并输出到`/tmp/xxx.log`文件中。
 
-**问题**：尝试聚合多个flume agent到一个fluagent中，并在实验报告中写明步骤和展示必要截图。
+```shell
+#!/usr/bin/env bash
+while :
+do
+	echo $(date '+%Y%m%d %T %s' [学号]) | tee -a /tmp/xxx.log
+	sleep 1
+done
+```
 
-在三个agent上分别输入`[学号]-1`,`[学号]-2`,`[学号]-3`，在聚合的agent上应当能看到这三个输出。
+**要求**：使用flume捕获到`/tmp/xxx.log`文件变化，输出到命令行中，并进行截图，需要贴出flume的相应配置文件。（查阅官方文档可以快速了解该题的解决方法）
 
-**注意**：这里的截图**必须**带有学号，并使用**红色方框**框出，否则**无效**。
+> 沿用之前的配置，用 Linux 中的管道也能够实现这样的效果，但是我们这里希望大家使用 flume 完成上述要求
 
-![https://flume.apache.org/releases/content/1.10.0/_images/UserGuide_image02.png](https://flume.apache.org/releases/content/1.10.0/_images/UserGuide_image02.png)
+**注意**：这里的截图**必须**带有学号，并使用**红色方框**框出，否则做**无效**计。
