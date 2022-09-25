@@ -89,26 +89,32 @@ rpm -qa | grep -i java | xargs -n1 sudo rpm -e --nodeps
 
 > 下列命令需要在各个节点上分别执行
 
-1. 修改本机主机名称，格式为 `hadoop1-[学号] `\\`hadoop2-[学号]`\\`hadoop3-[学号]` 如`hadoop1-2022110946`
+1. 在三台节点上分别修改主机名称，格式为 `[姓名缩写]-1-[学号] `\\`[姓名缩写]-2-[学号]`\\`[姓名缩写]-3-[学号]` 如`zs-1-2022111xxx`
 
    ```shell
-   sudo hostnamectl --static set-hostname hadoop1-2022110946
+   [root@server-0001 ~] sudo hostnamectl --static set-hostname zs-1-2022111xxx
+   [root@server-0002 ~] sudo hostnamectl --static set-hostname zs-2-2022111xxx
+   [root@server-0003 ~] sudo hostnamectl --static set-hostname zs-3-2022111xxx
    ```
 
    可以通过`hostname`命令查看是否修改成功
 
    ```shell
-   [root@server-0001 ~]$ hostname
-   hadoop1-2022110946
+   [root@zs-1-2022111xxx ~] hostname
+   zs-1-2022111xxx
+   [root@zs-2-2022111xxx ~] hostname 
+   zs-2-2022111xxx
+   [root@zs-3-2022111xxx ~] hostname 
+   zs-3-2022111xxx
    ```
 
-2. 使用sudo权限修改`/etc/hosts`文件，添加配置好的`主机名称`和`私有ip`
+2. 使用sudo权限修改`/etc/hosts`文件，添加配置好的`主机名称`和`私有ip`，**主机名称和上面配置的名称格式要一致！！**
 
    ```shell
-   # 内容供参考，需要根据配置的静态ip修改
-   192.168.0.80	hadoop1-2022110946
-   192.168.0.81	hadoop2-2022110946
-   192.168.0.82	hadoop3-2022110946
+   # 内容供参考，需要根据配置的局域网静态ip修改 
+   192.168.0.80	zs-1-2022111xxx
+   192.168.0.81	zs-2-2022111xxx
+   192.168.0.82	zs-3-2022111xxx
    ```
 
    
@@ -138,9 +144,9 @@ rpm -qa | grep -i java | xargs -n1 sudo rpm -e --nodeps
 
 
    ```shell
-   ssh-copy-id hadoop1-2022110946
-   ssh-copy-id hadoop2-2022110946
-   ssh-copy-id hadoop3-2022110946
+   ssh-copy-id zs-1-2022111xxx
+   ssh-copy-id zs-2-2022111xxx
+   ssh-copy-id zs-3-2022111xxx
    ```
 
    
@@ -183,60 +189,6 @@ rpm -qa | grep -i java | xargs -n1 sudo rpm -e --nodeps
 
    ![image-20220921163048958](./imgs/image-20220921163048958.png)
 
-## 6. Linux用户配置(可选)
-
-> 下列命令需要在各个节点上分别执行
-
-> 在后续的实验中，大家可以选择创建一个新的linux用户，并在该用户下进行操作。虽然使用root用户并不影响后续操作，但并不推荐直接使用root来进行项目开发和环境配置。**本节内容可选做！**
-
-1. 添加新用户
-
-   以root用户登录服务器后，执行`useradd`命令添加用户
-
-   ```shell
-   # 添加用户 -m选项表示自动为新用户创建home目录
-   useradd -m hadoop
-   
-   # 配置用户密码 在实验中为了方便，可以使用一些简短的密码，虽然终端会提示密码复杂度不足，但不影响
-   passwd hadoop
-   ```
-
-2. 为新用户添加`sudo`权限。对于一些敏感命令，或特殊目录下的文件操作，我们需要以sudo权限去执行命令，所以我们需要为新用户赋予该权限，使得我们可以执行一些高权限命令。
-
-   修改`/etc/sudoers`文件
-
-   > vim编辑器包含insert模式和命令模式，进入vim后，按`i`键即可进入insert模式，该模式下可以按正常的编辑逻辑进行修改。完成修改后，按`esc`退出insert模式，再输入`:wq`即可保存退出。如果对文件没有修改权限可能会提示无法保存，这时需要通过`:q!`退出后，使用sudo来执行vim编辑,或者使用`:wq!`退出
-   >
-   > - **vim下尽量不要使用中文输入法！！！**
-
-   ```shell
-   sudo vim /etc/sudoers
-   ```
-
-   找到如下内容，并添加 `hadoop`用户权限。提示，可以在vim的命令模式下，输入`/content`查找匹配content的内容
-
-   ```shell
-   ## Allow root to run any commands anywhere
-   root		ALL=(ALL)			ALL
-   # 下面是添加的内容
-   hadoop 	ALL=(ALL) 		NOPASSWD:ALL
-   ```
-
-   编辑效果：
-
-   ![image-20220921142908980](./imgs/image-20220921142908980.png)
-
-   **保存退出后，可以再次进入vim，查看文件是否成功修改！**
-
-3. 切换为`hadoop`用户
-
-   执行如下命令，即可切换为新建用户，之后可以直接通过该用户连接服务器
-
-   ```shell
-   su - hadoop
-   ```
-
-## 
 
 ## 附录
 
