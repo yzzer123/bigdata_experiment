@@ -10,7 +10,7 @@
     java -version
     ```
 
-![](E:\Desktop\助教\bigdata_experiment\exp2\img\java-v. jpg.jpg)
+![](./img\java-v. jpg.jpg)
 
 ​	如果测试结果不正确,请参考`实验1.5 JDK环境配置`重新配置
 
@@ -20,7 +20,7 @@
    hostname
    ```
 
-![](E:\Desktop\助教\bigdata_experiment\exp2\img\hostname.jpg)
+![](./img\hostname.jpg)
 
 ​	如果主机名称不符合要求,请参考`实验1.3 主机名称修改`,`1.4 ssh免密配置`重新配置.**(最终不符合要求会扣分)**
 
@@ -99,7 +99,7 @@
    hadoop version
    ```
 
-   ![](E:\Desktop\助教\bigdata_experiment\exp2\img\hadoop-v.jpg)
+   ![](./img\hadoop-v.jpg)
 
 5. 重启(`hadoop version`命令不可用时再重启)
 
@@ -351,7 +351,7 @@
    start-dfs.sh
    ```
 
-   ![](E:\Desktop\助教\bigdata_experiment\exp2\img\start-dfs.jpg)
+   ![](./img\start-dfs.jpg)
 
 3. 运行`start-yarn.sh`命令（打开YARN）
 
@@ -361,21 +361,21 @@
    start-yarn.sh
    ```
 
-   ![](E:\Desktop\助教\bigdata_experiment\exp2\img\start-yarn.jpg)
+   ![](./img\start-yarn.jpg)
 
 4. 查看进程是否启动
 
    4.1 在0号服务器,例如wyd-0-202214xxxx服务器上执行`jps`命令
 
-   ![](E:\Desktop\助教\bigdata_experiment\exp2\img\jps.jpg)
+   ![](./img\jps.jpg)
    
    4.2 在1号服务器,例如wyd-1-202214xxxx服务器上执行`jps`命令
 
-​									![](E:\Desktop\助教\bigdata_experiment\exp2\img\jps_1.jpg)
+​									![](./img\jps_1.jpg)
 
 ​	4.3 在2号服务器,例如wyd-2-202214xxxx服务器上执行`jps`命令
 
-![](E:\Desktop\助教\bigdata_experiment\exp2\img\jps_2.jpg)
+![](./img\jps_2.jpg)
 
 5.  **对照集群规划查看自己的服务器进程是否与规划一致.**
 
@@ -423,11 +423,11 @@ stop-yarn.sh
 
    HDFS
 
-   ![](E:\Desktop\助教\bigdata_experiment\exp2\img\namenode.jpg)
+   ![](./img\namenode.jpg)
 
    ​	YARN
 
-   ​	![YARN](E:\Desktop\助教\bigdata_experiment\exp2\img\yarn.jpg)
+   ​	![YARN](./img\yarn.jpg)
 
 3. 关闭Hadoop集群
 
