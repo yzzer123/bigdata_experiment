@@ -84,7 +84,7 @@ output:
    ```txt
    Hello
    Flume
-   [学号]
+   【学号】
    ```
 
 6. 在第 4 步中的输出中检查接收到的信息，截图并完成实验报告
@@ -95,7 +95,7 @@ output:
 
 **背景介绍**：现在有如下脚本正在运行，该脚本的作用是每秒生成一个时间戳并输出到`/tmp/xxx.log`文件中。
 
-```shell
+```bash
 #!/usr/bin/env bash
 while :
 do
