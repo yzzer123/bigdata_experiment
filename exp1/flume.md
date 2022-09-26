@@ -41,7 +41,7 @@ output:
    ```bash
    source /etc/profile
    ```
-   
+
    > 这里为了和之后的一些环境变量设置相统一，将环境变量放在全局的配置文件中，事实上这里放在 `~/.bashrc` 中也是可以的
 
 3. 配置 `source type` 为 `avor`，`sink type` 为 `logger`
@@ -67,7 +67,7 @@ output:
    agent1.channels.c1.transactionCapacity = 100
    ```
 
-4. 启动 flume
+4. 在 `${FLUME_HOME}` 目录下启动 flume
 
    ```bash
    flume-ng agent --conf conf --conf-file conf/avro.conf --name agent1 -Dflume.root.logger=INFO,console
@@ -91,7 +91,7 @@ output:
 
 
 
-## 思考题(额外加分项)
+## 思考题（额外加分项）
 
 **背景介绍**：现在有如下脚本正在运行，该脚本的作用是每秒生成一个时间戳并输出到`/tmp/xxx.log`文件中。
 
@@ -99,12 +99,12 @@ output:
 #!/usr/bin/env bash
 while :
 do
-	echo $(date '+%Y%m%d %T %s' [学号]) | tee -a /tmp/xxx.log
+	echo $(date '+%Y%m%d %T %s' 〖学号〗) | tee -a /tmp/xxx.log
 	sleep 1
 done
 ```
 
-**要求**：使用flume捕获到`/tmp/xxx.log`文件变化，输出到命令行中，并进行截图，需要贴出flume的相应配置文件。（查阅官方文档可以快速了解该题的解决方法）
+**要求**：使用 flume 捕获到`/tmp/xxx.log`文件变化，输出到命令行中，并进行截图，需要贴出 flume 的相应配置文件。（查阅官方文档可以快速了解该题的解决方法）
 
 > 沿用之前的配置，用 Linux 中的管道也能够实现这样的效果，但是我们这里希望大家使用 flume 完成上述要求
 
